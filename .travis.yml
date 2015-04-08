@@ -10,6 +10,8 @@ install:
   - sudo luarocks install luaposix
   - sudo luarocks install date
   - sudo luarocks make
+  - cat $(which busted) | sed 's/\/usr\/bin\/lua/.\/luajit/' > busted
+  - chmod +x busted
   - ./install_luajit.sh
 
-script: busted
+script: ./busted
